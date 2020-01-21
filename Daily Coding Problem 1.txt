@@ -7,24 +7,24 @@
 #print(x) and print(y) statements are to bugfix index tracking
 #works for all negative and positive integers, not tested on floats
 
-def kcheck(a, b):
-     x = 0
-     while x < 5:
-         for i in a:
-             z = 0
-             for y in a:
-                 if x == z:
-                     print(x)
-                     print(z)
-                     print('same index' + ' i = ' + str(i) + ' y = ' + str(y))
-                 elif i + y == b:
-                     print(x)
-                     print(z)
-                     print('Success' + ' i = ' + str(i) + ' y = ' + str(y))
-                 else:
-                     print(x)
-                     print(z)
-                     print('Failure' + ' i = ' + str(i) + ' y = ' + str(y))
-                 z += 1
-             if x < 5:	#unsure why if statement was needed to break while loop??
-                 x += 1
+def kcheck():
+    print('Hello! This function accepts a list of integers, a, and checks if any two values add up to another number, k, and return True if so')
+    a_input = [input('Please enter a list of integers (list a): ')]
+    k = int(input('Please enter a single integer (k): '))
+    print(a, k)
+    x = 0
+    found = False
+    while x < 5:
+        for i in a:
+            z = 0
+            for y in a:
+                if x == z:
+                    pass
+                elif i + y == k:
+                    found = True
+                else:
+                    pass
+                z += 1
+            if x < 5:  # unsure why if statement was needed to break while loop??
+                x += 1               
+    return found
