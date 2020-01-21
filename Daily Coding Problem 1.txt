@@ -50,19 +50,3 @@ def listprod(lst):
 		i += 1
 	print(a)
 	print(c)
-
-Finds the lowest positive integer missing from a list.
-Removes all negatives, sorts, then iterates.
-If it makes it through the list, it returns the next integer in sequence
-if it finds a missing integer, it returns that integer and breaks the loop.
-
-def pos_seq(lst):
-    lst = [i for i in lst if i >= 0]
-    lst.sort()
-    for x, y in enumerate(lst):
-        if y == x:
-            found = x + 1
-        else:
-            found = x
-            break
-    print(found)
