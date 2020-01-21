@@ -28,25 +28,3 @@ def kcheck(a, b):
                  z += 1
              if x < 5:	#unsure why if statement was needed to break while loop??
                  x += 1
-
-#This function removes i, finds the product of all other
-#list items, stores them to list c, then appends i back to
-#the original list. uses temporary list b to store i.
-
-def listprod(lst):
-	i=0
-	b = []
-	c = []
-	while i < len(lst):
-		b.append(lst[0])
-		lst.pop(0)
-		k = 1
-		for y in lst:
-			k *= y
-		c.append(k)
-		k == 0
-		lst.append(b[0])
-		b.pop(0)
-		i += 1
-	print(a)
-	print(c)
