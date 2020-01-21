@@ -1,0 +1,57 @@
+The area of a circle is defined as πr^2. Estimate π to 3 decimal places using a Monte Carlo method.
+
+Hint: The basic equation of a circle is x2 + y2 = r2.
+
+Monte Carlo Estimation of Pi
+
+a program which randomly selects points on a 1x1 grid, and determines if those points are inside
+or outside an inscribed circle quadrant, and uses the ratio of those inside and outside points to 
+estimate the areas of those spaces, and from that drives an estimation of pi
+
+import sys
+import math
+from matplotlib import pyplot as py
+import numpy as np
+import random as rnd
+import pandas as pd
+
+def pigen():
+    x = []
+    y = []
+    outside_x = []
+    outside_y = []
+    incount = 0
+    total = 0
+    for i in range(0, n):
+        xrnd = rnd.random()
+        yrnd = rnd.random()
+        x.append(xrnd)
+        y.append(yrnd)
+    for i in range(0, n):
+        if x[i]**2 + y[i]**2 > 1:
+            total += 1
+            outside_x.append(x[i])
+            outside_y.append(y[i])
+        else:
+            incount += 1
+            total += 1
+    pi_est = 4 * (incount / total)
+    print(f'Pi is estimated to be {pi_est}')
+    create_plot_query = input('Would you like to see the plot? y/n: ')
+    if create_plot_query == 'y':
+        py.scatter(x, y, color = 'red', s=0.00005)
+        py.xlabel('Horizontal Radius')
+        py.ylabel('Vertical Radius')
+        py.title('Monte Carlo Estimation of Pi')
+        py.scatter(outside_x, outside_y, color = 'blue', s=0.00005)
+        py.savefig('Monte Carlo Estimation of Pi')
+    elif create_plot_query == 'n':
+        recalc_pi = input('Would you like to attempt to calclulate Pi again? y/n: ')
+        if recalc_pi == 'y':
+            xygen(n)
+        elif recalc_pi == 'n':
+            print('No worries! Process terminated.')
+        else:
+            print('Invalid input! Please re-call the function')
+    else:
+        print('Invalid input! Please re-call the function')

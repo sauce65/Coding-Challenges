@@ -1,0 +1,68 @@
+Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
+
+For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17
+
+etermines if any two numbers in list "a" add up to number "b"
+uses index tracking within while loop to ensure same list item isn't checked against itself
+print(x) and print(y) statements are to bugfix index tracking
+works for all negative and positive integers, not tested on floats
+
+def kcheck(a, b):
+     x = 0
+     while x < 5:
+         for i in a:
+             z = 0
+             for y in a:
+                 if x == z:
+                     print(x)
+                     print(z)
+                     print('same index' + ' i = ' + str(i) + ' y = ' + str(y))
+                 elif i + y == b:
+                     print(x)
+                     print(z)
+                     print('Success' + ' i = ' + str(i) + ' y = ' + str(y))
+                 else:
+                     print(x)
+                     print(z)
+                     print('Failure' + ' i = ' + str(i) + ' y = ' + str(y))
+                 z += 1
+             if x < 5:	#unsure why if statement was needed to break while loop??
+                 x += 1
+
+This function removes i, finds the product of all other
+list items, stores them to list c, then appends i back to
+the original list. uses temporary list b to store i.
+
+def listprod(lst):
+	i=0
+	b = []
+	c = []
+	while i < len(lst):
+		b.append(lst[0])
+		lst.pop(0)
+		k = 1
+		for y in lst:
+			k *= y
+		c.append(k)
+		k == 0
+		lst.append(b[0])
+		b.pop(0)
+		i += 1
+	print(a)
+	print(c)
+
+Finds the lowest positive integer missing from a list.
+Removes all negatives, sorts, then iterates.
+If it makes it through the list, it returns the next integer in sequence
+if it finds a missing integer, it returns that integer and breaks the loop.
+
+def pos_seq(lst):
+    lst = [i for i in lst if i >= 0]
+    lst.sort()
+    for x, y in enumerate(lst):
+        if y == x:
+            found = x + 1
+        else:
+            found = x
+            break
+    print(found)
