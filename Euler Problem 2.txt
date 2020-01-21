@@ -1,4 +1,4 @@
-checks if an integer is divisible by a list of primes
+#checks if an integer is divisible by a list of primes
 
 def p_fact(y, lst):
 	factor_count = 0
@@ -10,7 +10,7 @@ def p_fact(y, lst):
 		pass
 	return factor_count    
 
-iterates up to n and adds new found primes to a list, checking for primality via p_fact
+#iterates up to n and adds new found primes to a list, checking for primality via p_fact
 
 def n_gen(n, lst):
 	for y range(2, n):
@@ -21,4 +21,4 @@ def n_gen(n, lst):
 		else:
 			pass
 
-LAST FUNCTION LOST
+#LAST FUNCTION LOST, will figure out later!
