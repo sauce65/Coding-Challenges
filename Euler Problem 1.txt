@@ -1,4 +1,4 @@
-This finds the sum of all integers with factors of x or y BELOW value n 
+#This finds the sum of all integers with factors of x or y BELOW value n 
 
 def mult(n, x, y):
     i = 0
