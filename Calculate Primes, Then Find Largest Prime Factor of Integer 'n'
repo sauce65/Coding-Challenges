@@ -5,7 +5,6 @@
 # factor cannot be prime, so I would count upwards and for each new integer i, I would check if any of the previously found primes p are # a factor of that number.  If it has no prime factors, it would become a member of the prime number list.  I would calculate primes 
 # until I reached the square root of the target number n, and then check if any of those numbers are prime factors, then return the 
 # largest of those prime factors.
-#THIS IS A CHANGE
 
 import math
 prime_numbers = []
