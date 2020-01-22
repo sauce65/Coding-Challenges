@@ -1,0 +1,57 @@
+# The prime factors of 13195 are 5, 7, 13 and 29.
+# What is the largest prime factor of the number (REDACTED)?
+
+# to do this, I figured I would also challenge myself to calculate the prime numbers myself.  I knew that any number which HAS a prime 
+# factor cannot be prime, so I would count upwards and for each new integer i, I would check if any of the previously found primes p are # a factor of that number.  If it has no prime factors, it would become a member of the prime number list.  I would calculate primes 
+# until I reached the square root of the target number n, and then check if any of those numbers are prime factors, then return the 
+# largest of those prime factors.
+
+import math
+prime_numbers = []
+# Our list of primes starts empty and gets built up iteratively in the function.
+
+def has_factor(i, lst):
+    # this takes a value i and checks it against the primes we've already found to see if it has prime factors
+    # if it finds a factor, it returns True, else it returs False indicating that it is prime!
+    factor_check = False
+    for val in prime_numbers:
+        if i % val == 0:
+            factor_check = True
+        else:
+            pass
+    return factor_check
+
+def countup(n, sq, lst):
+    # this function simply counts up from 2 to the square root of the supplied n value and passes it through
+    # the function has_factor to determine if it is prime.  If it comeback prime, the number i is added to
+    # the list of prime_numbers.
+    print(f'The square root of {n} (n) is {sq}. Calculating primes up to {sq}')
+    for i in range(2, sq):
+        factor = has_factor(i, lst)
+        if factor == False:
+            prime_numbers.append(i)
+        else:
+            pass
+
+def n_scan():
+    n = int(input('Please enter an integer: '))
+    # This takes user input for the integer we want to analyze and it stores it in the variable n.
+    sq = int(math.sqrt(n))
+    # Finds the square root of n, as the largest possible prime factor is the square root.
+    # Doing this limits how much much of our computational resources  we spend on such a calculation.
+    countup(n, sq, prime_numbers)
+    # Passes our n value, it's square root, and the list of prime numbers we plan to generate into the countup function.
+    n_factors = []
+    # This will collect any factors of n we may find
+    for prime in prime_numbers:
+        if n % prime == 0:
+            n_factors.append(prime)
+    # This for loop checks n against the prime numbers to find factors
+    if len(n_factors) == 0:
+        print(f'{n} is a prime number!')
+    # if the list n_factors comes up empty, that implies n ins prime, the program then prints this to the console.
+    else:
+        largest_factor = max(n_factors)
+        print(f'The largest prime factor of {n} is {largest_factor}')
+    # otherwise, the program finds the largest prime factor and prints that to the console.
+n_scan()
