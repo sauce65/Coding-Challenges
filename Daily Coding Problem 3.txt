@@ -1,23 +1,41 @@
-#Given an array of integers, find the first missing positive integer in linear time and constant space. In other words, find 
-#the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
+# Given an array of integers, find the first missing positive integer in linear time and constant space. In other words, find
+# the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
 
-#For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should give 3.
+# For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should give 3.
 
-#You can modify the input array in-place.
+# You can modify the input array in-place.
 
+# Since it would be too easy to just see if a list starts at 1 and counts up without skipping, I decided to start
+# counting at the first integer in the list and find missing numbers.  If no numbers are missing from the sequence,
+# we just report what number would follow in that sequence.
 
-#Finds the lowest positive integer missing from a list.
-#Removes all negatives, sorts, then iterates.
-#If it makes it through the list, it returns the next integer in sequence
-#if it finds a missing integer, it returns that integer and breaks the loop.
-
-def pos_seq(lst):
-    lst = [i for i in lst if i >= 0]
-    lst.sort()
-    for x, y in enumerate(lst):
-        if y == x:
-            found = x + 1
+def posSeq():
+    inputString = input("Enter a list numbers or separated by space: ")
+    # User input to define the list of numbers, gets spat out as a single string
+    userList = inputString.split()
+    # Splits the input string at every whitespace, then stores each segment in a list object
+    cleanList = [int(i) for i in userList]
+    # List comprehension to convert every string segment into an integer, stores integers in a another list
+    cleanList = [i for i in cleanList if i >= 0]
+    # Removes negative numbers as they do not apply to the problem, modifies the array in-place
+    cleanSet = set(cleanList)
+    # Converting to a set removes all duplicate elements
+    cleanList = list(cleanSet)
+    # Converts back to a list for iteration
+    c = cleanList[0]
+    # starts a counter c at the first list element
+    check = False
+    # this will check to let us know if we've successfully run through the list without finding a missing integer
+    for i in cleanList:
+        if i == c:
+            c += 1
+            # If the sequence is maintained, we move on to the next number
         else:
-            found = x
-            break
-    print(found)
+            print(c)
+            check = True
+            #since a missing integer was found, it switches check to True
+    if check == False:
+        print(c)
+        # If no missing integer was found, check will remain False and the program will report the next positive integer
+
+posSeq()
