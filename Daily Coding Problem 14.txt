@@ -8,12 +8,9 @@
 #or outside an inscribed circle quadrant, and uses the ratio of those inside and outside points to 
 #estimate the areas of those spaces, and from that drives an estimation of pi
 
-import sys
 import math
 from matplotlib import pyplot as py
-import numpy as np
 import random as rnd
-import pandas as pd
 
 def pigen():
     x = []
