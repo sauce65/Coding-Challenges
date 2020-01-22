@@ -1,0 +1,32 @@
+#Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
+
+#For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17
+
+# This code simply runs through each item in the list, and checks it against every other item to see if it adds up to k
+# There is a safeguard to ensure we don't add a number to itself and create a false positive.
+
+def k_check():
+    input_string = input("Enter a list numbers or separated by space: ")
+    # user input to define the list of numbers, gets spat out as a single string
+    userList = input_string.split()
+    # splits the input string at every whitespace, then stores each segment in a list object
+    cleanList = [int(i) for i in userList]
+    # list comprehension to convert every string segment into an integer, stores integers in a another list
+    k = int(input('Please enter a single integer: '))
+    # user input for an integer we want to check against the list
+    result = False
+    # the default result is false, only turns true if we find that two items in the list add up to k
+    for (x, y) in enumerate(cleanList):
+        for (a, b) in enumerate(cleanList):
+            if a == x:
+                pass
+            # specifies that if we are checking an item in the list against itself, we skip it to avoid false positives
+            elif y + b == k:
+                result = True
+            # if two integers in the list add up to k, the result is changed to True at this point
+            else:
+                pass
+            # if two integers don't add up to k, we move on
+    print(result)
+    #reports the answer
+k_check()
