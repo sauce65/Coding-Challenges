@@ -1,3 +1,5 @@
+#This challenge was my first dip into REGEX and so maybe not my most elegant code, but very educational!
+
 #Suppose we represent our file system by a string in the following manner:
 #The string "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext" represents:
 
@@ -27,11 +29,19 @@
 #The name of a file contains at least a period and an extension.
 #The name of a directory or sub-directory will not contain a period.
 
+clean = re.sub("\\n\\t+", "/", str)
+print(clean)
+file_path_1 = re.findall('/?[a-zA-Z]+[1]/?\.?e?x?t?', clean)
+print(file_path_1)
+file_path_2 = re.findall('/?[a-zA-Z]+[2]/?\.?e?x?t?', clean)
+print(file_path_2)
+path_str = f'{file_path_2}'
+split = path_str.split('/')
 
+#this is a very manual process and in the future I will be able to build better logic around it
 
-
-
-#the program below is a little more complicated, as I was trying to find the DEEPEST directory path with the most characters.
+#the program below is a little more complicated, as I was trying to find the DEEPEST directory path with the most characters, not just
+#the longest path name.
 #this was not the question asked, but I certainly learned a lot about regular expressions and made the basics of a possibly
 #useful program which provides an alternative result to the one required by the question, but it still needs work!
 
