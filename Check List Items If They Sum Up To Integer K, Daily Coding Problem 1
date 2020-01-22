@@ -7,11 +7,11 @@
 
 def k_check():
     input_string = input("Enter a list numbers or separated by space: ")
-    # user input to define the list of numbers, gets spat out as a single string
+    # User input to define the list of numbers, gets spat out as a single string
     userList = input_string.split()
-    # splits the input string at every whitespace, then stores each segment in a list object
+    # Splits the input string at every whitespace, then stores each segment in a list object
     cleanList = [int(i) for i in userList]
-    # list comprehension to convert every string segment into an integer, stores integers in a another list
+    # List comprehension to convert every string segment into an integer
     k = int(input('Please enter a single integer: '))
     # user input for an integer we want to check against the list
     result = False
