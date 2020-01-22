@@ -1,29 +1,36 @@
-#The area of a circle is defined as πr^2. Estimate π to 3 decimal places using a Monte Carlo method.
+# The area of a circle is defined as πr^2. Estimate π to 3 decimal places using a Monte Carlo method.
 
-#Hint: The basic equation of a circle is x2 + y2 = r2.
+# Hint: The basic equation of a circle is x^2 + y^2 = r^2.
 
-#Monte Carlo Estimation of Pi
+# Monte Carlo Estimation of Pi
 
-#a program which randomly selects points on a 1x1 grid, and determines if those points are inside
-#or outside an inscribed circle quadrant, and uses the ratio of those inside and outside points to 
-#estimate the areas of those spaces, and from that drives an estimation of pi
+# a program which randomly selects points on a 1x1 grid, and determines if those points are inside
+# or outside an inscribed circle quadrant, and uses the ratio of the points inside the quadrant vs total points in the grid to
+# estimate the areas of those spaces, and from that drives an estimation of pi.  The quadrant is given by x^2 + y^2 = 1.
 
-import math
-from matplotlib import pyplot as py
+from matplotlib import pyplot as plt
 import random as rnd
 
 def pigen():
+    print('Hello! for a decent pi estimation and to get the prettiest graph, at least 1 million iterations are recommended,\n'
+          'depnding on what your computational resources can handle!\n')
+    n = int(input('\tPlease enter a positive integer to specify the number of iterations: '))
     x = []
     y = []
+    # x and y will store the randomized x and y coordinates for our Monte Carlo simulation
     outside_x = []
     outside_y = []
+    # outside_x and outside_y will be the subset of outer points referenced when changing the color of those points in the plot
     incount = 0
+    # Will count how many points land inside the quadrant
     total = 0
+    # Will count how many total points are in the grid
     for i in range(0, n):
         xrnd = rnd.random()
         yrnd = rnd.random()
         x.append(xrnd)
         y.append(yrnd)
+    # This for loop generates random numbers and assigns them to x and y coordinates and stores them in the approrpiate lists
     for i in range(0, n):
         if x[i]**2 + y[i]**2 > 1:
             total += 1
@@ -32,16 +39,23 @@ def pigen():
         else:
             incount += 1
             total += 1
+    # This for loop checks if the random x-y coordinates fall inside or outside the quadrant boundary and adjusts counting
+    # variables and lists appropriately
     pi_est = 4 * (incount / total)
+    # This actually estimates pi based on the ratio of randomly selected points.
     print(f'Pi is estimated to be {pi_est}')
-    create_plot_query = input('Would you like to see the plot? y/n: ')
+    # Beyond this point, everything is just related to generating the cool plot of x-y coordinates vis-a-vis the circle quadrant
+    create_plot_query = input('Would you like to see the plot? (May take a moment to compute) y/n: ')
+    # This gives an opportunity to save computer power if you are unsatisfied with your pi estimation accuracy or don't want to
+    # crash your computer by generating a plot with possibly over a million datapoints
     if create_plot_query == 'y':
-        py.scatter(x, y, color = 'red', s=0.00005)
-        py.xlabel('Horizontal Radius')
-        py.ylabel('Vertical Radius')
-        py.title('Monte Carlo Estimation of Pi')
-        py.scatter(outside_x, outside_y, color = 'blue', s=0.00005)
-        py.savefig('Monte Carlo Estimation of Pi')
+        plt.scatter(x, y, color = 'red', s=0.00005)
+        plt.xlabel('Horizontal Radius')
+        plt.ylabel('Vertical Radius')
+        plt.title('Monte Carlo Estimation of Pi')
+        plt.scatter(outside_x, outside_y, color = 'blue', s=0.00005)
+        plt.savefig('Monte Carlo Estimation of Pi')
+        plt.show()
     elif create_plot_query == 'n':
         recalc_pi = input('Would you like to attempt to calclulate Pi again? y/n: ')
         if recalc_pi == 'y':
@@ -52,3 +66,4 @@ def pigen():
             print('Invalid input! Please re-call the function')
     else:
         print('Invalid input! Please re-call the function')
+pigen()
