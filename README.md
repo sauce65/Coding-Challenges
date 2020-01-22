@@ -1,2 +1,2 @@
 # Coding-Challenges
-# I am a new, self-taught Python programmer.  I have been completing various challenges to learn different areas and techniques..  Now that I have a few under my belt, it's worth putting my work out there!  I am working on really simple stuff, but I am enjoying everything so far.
+# I am a new, self-taught Python programmer.  I have been completing various challenges to learn and grow my skillset!
