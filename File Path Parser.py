@@ -32,3 +32,7 @@ for i in file:
     dirty += i
 clean2 = re.sub("\\n\\t+", "/", dirty)
 print(clean2)
+
+#flaws: many.  Mainly, this doesn't auto-detect the main file branch number to reference in the lookback, and
+#it doesn't have a contingency for when the terminating file in the path is just a subdir.  This is primitive but
+#it works if you configure it for each string you parse
