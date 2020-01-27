@@ -10,7 +10,7 @@
 
 import re
 
-def strmatch():
+def strMatch():
     str_input = input('Enter a string: ')
     regex_input = input('Enter a regular expression: ')
     x = re.fullmatch(regex_input, str_input)
@@ -19,4 +19,4 @@ def strmatch():
     else:
         print(True)
 
-func()
+strMatch()
