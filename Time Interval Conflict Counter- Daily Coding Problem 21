@@ -1,0 +1,15 @@
+# Given an array of time intervals (start, end) for classroom lectures (possibly overlapping), 
+# find the minimum number of rooms required.
+# For example, given [(30, 75), (0, 50), (60, 150)], you should return 2.
+
+time = [[30, 75], [0, 50], [60, 150], [76, 100], [55, 80], [60, 70]]
+time.sort()
+conflicts = []
+for x in range(len(time) - 1):
+    stop = range(x).stop
+    start = range(x+1).start
+    if stop > start:
+        conflicts.append(time[x])
+        x = 0
+rooms = len(conflicts)
+print(rooms)
